@@ -3,31 +3,40 @@ import HeaderLink from './HeaderLink.astro';
 ---
 <header>
 	<nav>
-		<div class="internal-links">
-			<HeaderLink href="/">Home</HeaderLink>
-		</div>
+		<HeaderLink href="/">Home</HeaderLink>
 	</nav>
 </header>
 <style>
 	header {
-		margin: 0;
-		padding: 0 1em;
-		background: white;
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+		margin: 0 auto;
+		padding: 0.6em 2em;
+		background: rgba(255, 255, 255, 0.45);
+		backdrop-filter: blur(10px);
+		border-bottom: 1px solid rgba(255, 200, 210, 0.4);
+		position: sticky;
+		top: 0;
+		z-index: 10;
 	}
 	nav {
+		max-width: 720px;
+		margin: 0 auto;
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		gap: 1em;
 	}
 	nav a {
-		padding: 1em 0.5em;
-		color: var(--black);
-		border-bottom: 4px solid transparent;
+		padding: 0.4em 0.8em;
+		color: #c084a0;
 		text-decoration: none;
+		font-size: 0.95em;
+		letter-spacing: 0.05em;
+		border-radius: 20px;
+		transition: background 0.2s;
+	}
+	nav a:hover {
+		background: rgba(255, 200, 210, 0.3);
 	}
 	nav a.active {
-		text-decoration: none;
-		border-bottom-color: var(--accent);
+		background: rgba(255, 200, 210, 0.3);
 	}
 </style>
