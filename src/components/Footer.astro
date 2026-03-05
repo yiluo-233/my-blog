@@ -2,12 +2,36 @@
 const today = new Date();
 ---
 <footer>
-	&copy; {today.getFullYear()}
+	<div class="social-links">
+		<a href="https://x.com/yiluo_928" target="_blank">Twitter / X</a>
+		<a href="https://space.bilibili.com/1475463692" target="_blank">哔哩哔哩</a>
+		<a href="https://github.com/yiluo-233" target="_blank">GitHub</a>
+		<a href="https://www.jianshu.com/u/1814a1f0ae33" target="_blank">简书</a>
+	</div>
+	<div class="copyright">&copy; {today.getFullYear()}</div>
 </footer>
 <style>
 	footer {
-		padding: 2em 1em 6em 1em;
-		color: rgb(var(--gray));
+		padding: 2em 1em 4em 1em;
 		text-align: center;
+	}
+	.social-links {
+		display: flex;
+		justify-content: center;
+		gap: 1.5em;
+		margin-bottom: 1em;
+	}
+	.social-links a {
+		color: rgb(var(--gray));
+		text-decoration: none;
+		font-size: 0.9em;
+		letter-spacing: 0.05em;
+	}
+	.social-links a:hover {
+		color: #c084a0;
+	}
+	.copyright {
+		color: rgb(var(--gray));
+		font-size: 0.8em;
 	}
 </style>
