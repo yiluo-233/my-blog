@@ -17,12 +17,20 @@ const today = new Date();
 	function update() {
 		const now = new Date();
 		const diff = now - start;
-		const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-		const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-		const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-		const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+		const msInYear = 1000 * 60 * 60 * 24 * 365;
+		const msInDay = 1000 * 60 * 60 * 24;
+		const msInHour = 1000 * 60 * 60;
+		const msInMinute = 1000 * 60;
+
+		const years = Math.floor(diff / msInYear);
+		const days = Math.floor((diff % msInYear) / msInDay);
+		const hours = Math.floor((diff % msInDay) / msInHour);
+		const minutes = Math.floor((diff % msInHour) / msInMinute);
+		const seconds = Math.floor((diff % msInMinute) / 1000);
+
 		document.getElementById('timer').textContent =
-			`This website has been around for ${days} d ${hours} h ${minutes} m ${seconds} s`;
+			`This website has been around for ${years} y ${days} d ${hours} h ${minutes} m ${seconds} s`;
 	}
 	update();
 	setInterval(update, 1000);
