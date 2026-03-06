@@ -4,12 +4,45 @@ import HeaderLink from './HeaderLink.astro';
 <header>
 	<nav>
 		<HeaderLink href="/">Home</HeaderLink>
-		<HeaderLink href="/blog">Blog</HeaderLink>
+		<div class="dropdown">
+			<button class="dropdown-btn">Blog ▾</button>
+			<div class="dropdown-menu" id="dropdown-menu">
+				<a href="/blog/essay">散文</a>
+				<a href="/blog/journal">日记</a>
+			</div>
+		</div>
 	</nav>
 </header>
+
+<script>
+	const btn = document.querySelector('.dropdown-btn');
+	const menu = document.getElementById('dropdown-menu');
+	const dropdown = document.querySelector('.dropdown');
+
+	// 点击触发（手机）
+	btn.addEventListener('click', () => {
+		menu.classList.toggle('open');
+	});
+
+	// 悬停触发（电脑）
+	dropdown.addEventListener('mouseenter', () => {
+		menu.classList.add('open');
+	});
+	dropdown.addEventListener('mouseleave', () => {
+		menu.classList.remove('open');
+	});
+
+	// 点击其他地方关闭
+	document.addEventListener('click', (e) => {
+		if (!dropdown.contains(e.target)) {
+			menu.classList.remove('open');
+		}
+	});
+</script>
+
 <style>
 	header {
-		margin: 0 auto;
+		margin: 0;
 		padding: 0.6em 2em;
 		background: rgba(255, 255, 255, 0.45);
 		backdrop-filter: blur(10px);
@@ -38,6 +71,50 @@ import HeaderLink from './HeaderLink.astro';
 		background: rgba(255, 200, 210, 0.3);
 	}
 	nav a.active {
+		background: rgba(255, 200, 210, 0.3);
+	}
+	.dropdown {
+		position: relative;
+	}
+	.dropdown-btn {
+		padding: 0.4em 0.8em;
+		color: #c084a0;
+		background: none;
+		border: none;
+		font-size: 0.95em;
+		letter-spacing: 0.05em;
+		border-radius: 20px;
+		cursor: pointer;
+		transition: background 0.2s;
+		font-family: inherit;
+	}
+	.dropdown-btn:hover {
+		background: rgba(255, 200, 210, 0.3);
+	}
+	.dropdown-menu {
+		display: none;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		background: rgba(255, 255, 255, 0.9);
+		backdrop-filter: blur(10px);
+		border: 1px solid rgba(255, 200, 210, 0.4);
+		border-radius: 12px;
+		padding: 0.5em 0;
+		min-width: 100px;
+		flex-direction: column;
+	}
+	.dropdown-menu.open {
+		display: flex;
+	}
+	.dropdown-menu a {
+		padding: 0.4em 1em;
+		border-radius: 0;
+		color: #c084a0;
+		text-decoration: none;
+		font-size: 0.95em;
+	}
+	.dropdown-menu a:hover {
 		background: rgba(255, 200, 210, 0.3);
 	}
 </style>
