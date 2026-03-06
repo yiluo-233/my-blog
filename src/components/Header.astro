@@ -61,10 +61,12 @@ import HeaderLink from './HeaderLink.astro';
 		padding: 0.5em 0;
 		min-width: 100px;
 	}
-	.dropdown:hover .dropdown-menu {
-		display: flex;
-		flex-direction: column;
-	}
+	@media (hover: hover) {
+    .dropdown:hover .dropdown-menu {
+        display: flex;
+        flex-direction: column;
+    }
+}
 	.dropdown-menu a {
 		padding: 0.4em 1em;
 		border-radius: 0;
