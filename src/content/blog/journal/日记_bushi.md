@@ -1,5 +1,5 @@
 ---
-titie : '日记_bushi'
+title : '日记_bushi'
 desrciption : 'None.'
 pubDate : '2026-03-06'
 ---
