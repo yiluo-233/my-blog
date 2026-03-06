@@ -2,12 +2,6 @@
 const today = new Date();
 ---
 <footer>
-	<div class="social-links">
-		<a href="https://x.com/yiluo_928" target="_blank">Twitter / X</a>
-		<a href="https://space.bilibili.com/1475463692" target="_blank">哔哩哔哩</a>
-		<a href="https://github.com/yiluo-233" target="_blank">GitHub</a>
-		<a href="https://www.jianshu.com/u/1814a1f0ae33" target="_blank">简书</a>
-	</div>
 	<div class="timer" id="timer"></div>
 	<div class="copyright">&copy; {today.getFullYear()}</div>
 </footer>
@@ -17,18 +11,11 @@ const today = new Date();
 	function update() {
 		const now = new Date();
 		const diff = now - start;
-
-		const msInYear = 1000 * 60 * 60 * 24 * 365;
-		const msInDay = 1000 * 60 * 60 * 24;
-		const msInHour = 1000 * 60 * 60;
-		const msInMinute = 1000 * 60;
-
-		const years = Math.floor(diff / msInYear);
-		const days = Math.floor((diff % msInYear) / msInDay);
-		const hours = Math.floor((diff % msInDay) / msInHour);
-		const minutes = Math.floor((diff % msInHour) / msInMinute);
-		const seconds = Math.floor((diff % msInMinute) / 1000);
-
+		const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+		const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24));
+		const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+		const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 		document.getElementById('timer').textContent =
 			`This website has been around for ${years} y ${days} d ${hours} h ${minutes} m ${seconds} s`;
 	}
@@ -40,21 +27,6 @@ const today = new Date();
 	footer {
 		padding: 2em 1em 4em 1em;
 		text-align: center;
-	}
-	.social-links {
-		display: flex;
-		justify-content: center;
-		gap: 1.5em;
-		margin-bottom: 1em;
-	}
-	.social-links a {
-		color: rgb(var(--gray));
-		text-decoration: none;
-		font-size: 0.9em;
-		letter-spacing: 0.05em;
-	}
-	.social-links a:hover {
-		color: #c084a0;
 	}
 	.timer {
 		color: rgb(var(--gray));
